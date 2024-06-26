@@ -7,6 +7,13 @@ app = Flask(__name__)
 # Ask for the Slack webhook URL
 slack_webhook_url = input("Please enter your Slack webhook URL: ")
 
+# Ask for the desired port number
+port = input("Please enter the port number you want to use (Default is 5000): ")
+if not port:
+    port = 5000
+else:
+    port = int(port)
+
 def send_to_slack(payload):
     try:
         response = requests.post(slack_webhook_url, json=payload)
@@ -90,4 +97,4 @@ def handle_webhook():
             return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=port)

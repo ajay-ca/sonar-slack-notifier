@@ -73,7 +73,7 @@ Here is an example of the JSON payload that the application expects from SonarQu
     "name": "main",
     "type": "BRANCH",
     "isMain": true,
-    "url": "https://sonarqube.gewaninfotech.com/dashboard?id=new-python-key"
+    "url": "https://sonarqube.com/dashboard?id=new-python-key"
   },
   "qualityGate": {
     "name": "Python",

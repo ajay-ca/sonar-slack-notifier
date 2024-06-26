@@ -1,12 +1,11 @@
 import requests
 from flask import Flask, request, jsonify
 from datetime import datetime
-from dateutil import parser
 
 app = Flask(__name__)
 
-# Replace with your Slack webhook URL
-slack_webhook_url = 'https://<slack-webhook-url>'
+# Ask for the Slack webhook URL
+slack_webhook_url = input("Please enter your Slack webhook URL: ")
 
 def send_to_slack(payload):
     try:
@@ -27,11 +26,7 @@ def handle_webhook():
                 project_url = data.get('project', {}).get('url')
                 branch_name = data.get('branch', {}).get('name')
                 quality_gate_status = data.get('qualityGate', {}).get('status')
-                # analysed_at = data.get('analysedAt')
 
-                # # Parse the analysedAt value to extract the time in hh:mm format
-                # analysed_time = datetime.fromisoformat(analysed_at).strftime('%H:%M')
-                
                 # Set color based on quality gate status
                 color = "#FFFF00"  # Default color
                 if quality_gate_status == "OK":
@@ -78,11 +73,6 @@ def handle_webhook():
                                     "value": branch_name,
                                     "short": True
                                 }
-                                # {
-                                #     "title": "*Time Analyzed:*",
-                                #     "value": analysed_time,
-                                #     "short": True
-                                # }
                             ],
                             "footer": f"<{project_url} |SonarQube Dashboard>",
                             "ts": datetime.now().timestamp()

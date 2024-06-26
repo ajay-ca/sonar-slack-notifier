@@ -6,8 +6,7 @@ from dateutil import parser
 app = Flask(__name__)
 
 # Replace with your Slack webhook URL
-# slack_webhook_url = 'https://hooks.slack.com/services/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' # For testing
-slack_webhook_url = 'https://hooks.slack.com/services/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'
+slack_webhook_url = 'https://<slack-webhook-url>'
 
 def send_to_slack(payload):
     try:

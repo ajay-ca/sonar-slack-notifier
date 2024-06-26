@@ -3,8 +3,9 @@
 This is a Flask application that receives webhook events from SonarQube and sends analysis reports to a specified Slack channel.
 
 ## Preview
-<img src="https://github.com/ajay-ca/sonar-slack-notifier/assets/87013178/933a060b-4af4-4aab-a914-9511fa547fc6" align="left" width="450">
-<img src="https://github.com/ajay-ca/sonar-slack-notifier/assets/87013178/1e818cd5-a440-4d85-9c70-e565e664d13a" align="left" width="450">
+
+<img src="https://github.com/ajay-ca/sonar-slack-notifier/assets/87013178/1e818cd5-a440-4d85-9c70-e565e664d13a" align="left" width="450">&nbsp;&nbsp;
+<img src="https://github.com/ajay-ca/sonar-slack-notifier/assets/87013178/933a060b-4af4-4aab-a914-9511fa547fc6" align="middle" width="450">&nbsp;&nbsp;
 <br /> 
 
 ## Requirements
@@ -12,6 +13,8 @@ This is a Flask application that receives webhook events from SonarQube and send
 - Flask
 - requests
 - python-dateutil
+
+**NOTE:** If you are getting `Command 'python' not found`, then use `python3` instead of `python` or alias the same in your **bashrc** file
 
 ## Installation
 
@@ -35,7 +38,7 @@ pip install -r requirements.txt
 ```
 
 ## Configuration
-Before running the application, you need to provide your Slack webhook URL. The application will prompt you to enter this URL when it starts.
+Before running the application, you need to provide your [Slack webhook URL](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks?tab=more_info). The application will prompt you to enter this URL when it starts.
 
 ## Running the Application
 To start the Flask application, run:
@@ -45,7 +48,7 @@ python app.py
 ```
 
 ## Usage
-1. Set up a webhook in SonarQube to send JSON payloads to the Flask application's URL.
+1. Set up a webhook in SonarQube through ***Administration -> Configuration -> Webhooks***. Click on **Create** button and provide a name along with the URL or the *ip_address:port* of your server.
 2. The application will process the incoming webhook events and send formatted messages to the Slack channel.
 
 ## Example Payload

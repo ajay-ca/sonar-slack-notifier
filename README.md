@@ -46,10 +46,12 @@ To start the Flask application, run:
 ```
 python app.py
 ```
+By default the app will be available in port `5000`. If you have mentioned a different port, then use `http://localhost:5000` or `http://server_ip_address:port` to send your payload
 
 ## Usage
-1. Set up a webhook in SonarQube through ***Administration -> Configuration -> Webhooks***. Click on **Create** button and provide a name along with the URL or the *ip_address:port* of your server.
-   ![image](https://github.com/ajay-ca/sonar-slack-notifier/assets/87013178/fb17de46-ab45-4d1c-a4b7-116bc9d32fdd)
+1. Set up a webhook in SonarQube through ***Administration -> Configuration -> Webhooks***. Click on **Create** button and provide a name along with the URL or the *http://server_ip_address:port* of your server.
+
+   ![sonarqube-window](https://github.com/ajay-ca/sonar-slack-notifier/assets/87013178/fb17de46-ab45-4d1c-a4b7-116bc9d32fdd)
 
 3. The application will process the incoming webhook events and send formatted messages to the Slack channel.
 

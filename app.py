@@ -1,11 +1,34 @@
 import requests
 from flask import Flask, request, jsonify
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 
-# Ask for the Slack webhook URL
-slack_webhook_url = input("Please enter your Slack webhook URL: ")
+# File to store the Slack webhook URL
+WEBHOOK_FILE = ".config"
+
+def get_slack_webhook_url():
+    if os.path.exists(WEBHOOK_FILE):
+        with open(WEBHOOK_FILE, 'r') as file:
+            saved_url = file.read().strip()
+            last_six = saved_url[-6:]
+            user_input = input(f"Use previous Slack webhook URL [**********{last_six}]? (Press Enter to confirm or enter a new URL): ")
+            if user_input.lower() == 'new':
+                return enter_new_slack_webhook_url()
+            else:
+                return saved_url
+    else:
+        return enter_new_slack_webhook_url()
+
+def enter_new_slack_webhook_url():
+    new_url = input("Please enter your Slack webhook URL: ")
+    with open(WEBHOOK_FILE, 'w') as file:
+        file.write(new_url)
+    return new_url
+
+# Get the Slack webhook URL
+slack_webhook_url = get_slack_webhook_url()
 
 # Ask for the desired port number
 port = input("Please enter the port number you want to use (Default is 5000): ")
